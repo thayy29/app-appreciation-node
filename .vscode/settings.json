@@ -1,4 +1,7 @@
 {
     "terminal.integrated.defaultProfile.windows": "Git Bash",
-    "editor.fontFamily": "JetBrains Mono"
+    "editor.fontFamily": "JetBrains Mono",
+    "cSpell.words": [
+        "typeorm"
+    ]
 }
