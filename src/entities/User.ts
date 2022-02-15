@@ -1,10 +1,16 @@
-import { Entity, PrimaryColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import {
+  Entity,
+  PrimaryColumn,
+  Column,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from "typeorm";
 import { v4 as uuid } from "uuid";
 @Entity("users")
- class User {
+class User {
 
 @PrimaryColumn()
-  readonly id: string;
+readonly id: string;
 
 @Column()
   name: string;
@@ -18,7 +24,7 @@ import { v4 as uuid } from "uuid";
 @CreateDateColumn()
   created_at: Date;
 
-@UpdateDateColumn() 
+@UpdateDateColumn()
   updated_at: Date;
 
 

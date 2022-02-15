@@ -1,5 +1,7 @@
-import { User } from "../entities/User";
+// import { User } from '../entities/User';
+import { getCustomRepository } from "typeorm";
 import { UsersRepositories } from "../repositories/UsersRepositories";
+
 
 interface IUserRequest {
   name: string;
@@ -8,7 +10,7 @@ interface IUserRequest {
 }
 class CreateUserService {
   async execute({name, email, admin} : IUserRequest) {
-    const usersRepository = new UsersRepositories();
+    const usersRepository = getCustomRepository(UsersRepositories)
 
     // Verificar se o email está preenchido
     if(!email) {
@@ -28,20 +30,14 @@ class CreateUserService {
     const user = usersRepository.create({
       name,
       email,
-      admin
+      admin,
     });
 
     await usersRepository.save(user);
-
     return user;
   }
   
 }
-
-
-
-
-
 
 export { CreateUserService};
 
