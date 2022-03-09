@@ -18,11 +18,14 @@ class CreateComplimentService{
     );
     const usersRepositories = getCustomRepository(UsersRepositories);
 
+    // Não é possível cadastrar um elogio para si
     if (user_sender === user_receiver) {
       throw new Error("Incorrect User Receiver");
     }
+
     const userReceiverExists = await usersRepositories.findOne(user_receiver);
 
+    // Não é possível cadastrar elogios para usuários inválidos
     if (!userReceiverExists) {
       throw new Error("User Receiver does not exists!");
     }
