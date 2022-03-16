@@ -6,17 +6,16 @@ import { router } from "../src/routes";
 
 import "./database";
 
-//atua nas rotas 
+//atua nas rotas
 const app = express();
 
-app.use(express.json())
+app.use(express.json());
 
 app.use(router);
 
-
 // Middleware para tratamento de erros
 app.use(
-  (err: Error, request: Request, response: Response, next: NextFunction) =>{
+  (err: Error, request: Request, response: Response, next: NextFunction) => {
     if (err instanceof Error) {
       return response.status(400).json({
         error: err.message,
@@ -28,9 +27,7 @@ app.use(
       message: "Internal Server Error",
     });
   }
-)
+);
 
 // iniciando o servidor
-app.listen(3000, () => console.log("Server is running")); 
-
-
+app.listen(3000, () => console.log("Server is running"));

@@ -6,34 +6,35 @@ import {
   UpdateDateColumn,
 } from "typeorm";
 import { v4 as uuid } from "uuid";
+import { Exclude } from "class-transformer";
+
 @Entity("users")
 class User {
+  @PrimaryColumn()
+  readonly id: string;
 
-@PrimaryColumn()
-readonly id: string;
-
-@Column()
+  @Column()
   name: string;
 
-@Column()
+  @Column()
   email: string;
 
-@Column() 
+  @Column()
   admin: boolean;
 
-@Column() 
-password: string;
+  @Exclude()
+  @Column()
+  password: string;
 
-@CreateDateColumn()
+  @CreateDateColumn()
   created_at: Date;
 
-@UpdateDateColumn()
+  @UpdateDateColumn()
   updated_at: Date;
 
-
-  constructor(){
-    if(!this.id) {
-      this.id = uuid()
+  constructor() {
+    if (!this.id) {
+      this.id = uuid();
     }
   }
 }
